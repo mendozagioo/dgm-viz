@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <title></title>
+  <meta charset="utf-8" http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Polymer -->
+  <script type="text/javascript" src="../../bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+  <link rel="import" href="../../bower_components/polymer/polymer.html">
+  <link rel="import" href="../../bower_components/dgm-navbar/dgm-navbar.html">
+  <link rel="import" href="../../bower_components/dgm-footer/dgm-footer.html">
+  <link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel='stylesheet' href='../../css/main.css' />
+</head>
+
+<body>
+  <dgm-navbar></dgm-navbar>
+  <div class="breadcrumb-container">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-7">
+          <ul class="breadcrumb">
+            <li>
+              <a href="http://datos.gob.mx/">
+                <i class="glyphicon glyphicon-home"></i>
+              </a>
+            </li>
+            <li><a href="/">Visualizaciones</a></li>
+            <li class="active"><a href="http://datos.gob.mx/visualizaciones">Test</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>Visualizaciones | <strong class="text-higlight">SELECCIÓN DE GRÁFICAS</strong></h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <p style="padding-bottom: 15px;">
+          En esta sección podrás visualizar algunos de los Datos Abiertos más buscados en datos.gob.mx <br>
+          Para generar una visualización, primero escribe el título de la gráfica, después selecciona el tipo de gráfica y luego selecciona la base de datos.
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 form-group">
+        <strong>1. Escribe el título de la gráfica</strong>
+        <input id="graphTitle" type="text" name="title" class="form-control"></input>
+      </div>
+      <div class="col-md-6 form-group">
+        <strong>2. Selecciona el tipo de gráfica</strong>
+        <select id="graphType" class="form-control">
+          <option value="bar">Gráfica de barras</option>
+          <option value="com">Gráfica de composición</option>
+          <option value="sec">Gráfica de sectores</option>
+          <option value="dis">Gráfica de dispersión</option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 form-group">
+        <strong>3. Escribe la url de la base de datos</strong>
+        <input id="graphBDD" type="text" class="form-control"></input>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 form-group">
+        <button id="createGraph" class="btn btn-primary">Generar gráfica</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <strong><p id="titulo" style="padding-top: 25px; padding-bottom: 25px; text-align: center; text-transform: uppercase; font-size: 16px;"></p></strong>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <!-- AQUI VA LA DESCRIPCIÓN -->
+        <div id="descripcion" style="padding-bottom: 20px; line-height: 1.6em;"></div>
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <!-- AQUÍ VA LA VISUALIZACIÓN -->
+        <iframe id="marcoVisualizaciones" border=0 name=iframe src="" frameborder="0" scrolling="no" style="overflow: hidden; width: 100%; height: 600px;">
+          <p>Tu navegador no soporta IFRAMES</p>
+        </iframe>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <!-- AQUI VA LA FUENTE -->
+        <i><p id="fuente" style="padding-bottom: 15px;">FUENTE</p></i>
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <button id="btnDescargar" class="btn btn-default" type="submit">DESCARGAR</button>
+        <button id="btnEmbeber" class="btn btn-default">EMBEBER</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <br>
+        <pre id="compartir" hidden></pre>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <br>
+        <h1>Datos</h1>
+        <div class="data-table">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Institución</th>
+                <th>Formato</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr id="dato" data-href="">
+                <td id="nombreDato" class=""></td>
+                <td id="institucionDato" width="25%" class=""></td>
+                <td width="10%">
+                  <span id="tipoDato" data-format="XLSX" class="dataset-format"></span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <br>
+      </div>
+    </div>
+  </div>
+  <div id="output" hidden></div>
+  <dgm-footer></dgm-footer>
+  <!-- JQuery -->
+  <script type="text/javascript" src="../../bower_components/jquery/dist/jquery.min.js"></script>
+  <!-- BOOTSTRAP -->
+  <script type="text/javascript" src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="../../js/saveSvgAsPng.js"></script>
+  <script type="text/javascript" src="js/main.js"></script>
+</body>
+
+</html>
