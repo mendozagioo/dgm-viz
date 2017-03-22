@@ -1,4 +1,5 @@
 var url = window.location.search;
+console.log(url);
 var datas = url.split("?");
 var bdd = datas[1].substring(4);
 var year = datas[2].substring(5);
@@ -6,8 +7,6 @@ var year = datas[2].substring(5);
 
 var urlToGo = "partials/" + bdd + year + ".json";
 urlToGo = urlToGo.toLowerCase();
-
-console.log(urlToGo);
 
 
 var visualization = d3plus.viz()
